@@ -1,0 +1,242 @@
+Joins...
+
+CREATE TABLE department (
+    dept_id INT PRIMARY KEY,
+    dept_name VARCHAR(40) NOT NULL
+);
+
+INSERT INTO department VALUES
+(10, 'Computer'),
+(20, 'IT'),
+(30, 'Electronics'),
+(40, 'Mechanical');
+
+CREATE TABLE student (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(40) NOT NULL,
+    dept_id INT NULL,
+    mentor_id INT NULL,
+    CONSTRAINT fk_student_department
+        FOREIGN KEY (dept_id) REFERENCES department(dept_id),
+    CONSTRAINT fk_student_mentor
+        FOREIGN KEY (mentor_id) REFERENCES student(student_id)
+);
+
+INSERT INTO student VALUES
+(1, 'Rahul', 10, NULL),
+(2, 'Priya', 20, 1),
+(3, 'Amit', 10, 1),
+(4, 'Sneha', NULL, 2),
+(5, 'Karan', 30, 1),
+(6, 'Neha', 20, 2),
+(7, 'Vikram', 10, 3),
+(8, 'Pooja', 30, 5),
+(9, 'Rohan', 20, 2),
+(10, 'Isha', NULL, 1),
+(11, 'Arjun', 10, 7),
+(12, 'Meera', 30, 5);
+
+CREATE TABLE course (
+    course_id INT PRIMARY KEY,
+    course_name VARCHAR(50) NOT NULL
+);
+
+INSERT INTO course VALUES
+(101, 'Java'),
+(102, 'MySQL'),
+(103, 'Python'),
+(104, 'Web Development'),
+(105, 'Data Structures'),
+(106, 'Cloud Computing');
+
+CREATE TABLE student_course (
+    student_id INT,
+    course_id INT,
+    PRIMARY KEY (student_id, course_id),
+    FOREIGN KEY (student_id) REFERENCES student(student_id),
+    FOREIGN KEY (course_id) REFERENCES course(course_id)
+);
+
+INSERT INTO student_course VALUES
+(1,101),(1,102),(2,102),(2,104),(3,101),
+(3,103),(4,104),(5,103),(5,105),(6,102),
+(7,101),(7,105),(8,103),(9,104),(11,105);
+
+
+
+
+select s.student_id, s.name, c.course_name
+from student as s
+join student_course as sc
+On s.student_id=sc.student_id
+Join course c
+On sc.course_id=c.course_id;
+
+
+create table employee (emp_id int primary key,
+emp_name varchar(30),
+department varchar(30),
+salary int,
+joining_date date);
+
+
+
+SELECT emp_name, dept_id
+FROM employee
+WHERE dept_id NOT IN (
+    SELECT 20 NOT IN (10, NULL)
+);
+
+
+
+SELECT e.emp_name, e.salary, e.dept_id
+FROM employee e
+WHERE e.salary > (
+    SELECT AVG(e2.salary)
+    FROM employee e2
+    WHERE e2.dept_id = e.dept_id
+);
+
+
+
+
+
+
+SELECT d.dept_id, d.dept_name
+FROM department d
+WHERE IN (
+
+
+
+    SELECT 1
+    FROM employee e
+    WHERE e.dept_id = d.dept_id
+);
+
+
+SELECT d.dept_id, d.dept_name
+FROM department d
+WHERE EXISTS (
+    SELECT 1
+    FROM employee e
+    WHERE e.dept_id = d.dept_id
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT s.student_id, s.name, d.dept_name
+FROM student AS s
+INNER JOIN department AS d
+    ON s.dept_id = d.dept_id;
+
+
+
+SELECT AVG(e2.salary), dept_id
+    FROM employee e2 group by dept_id
+
+
+
+
+
+
+
+SELECT emp_name,
+       department, salary,
+       AVG(salary) OVER () AS overall_avg_salary
+FROM employee;
+
+SELECT emp_name,
+       salary,
+       SUM(salary) OVER (
+           ORDER BY salary, emp_id
+           ROWS BETWEEN UNBOUNDED PRECEDING
+                    AND CURRENT ROW
+       ) AS running_salary_total
+FROM employee;
+
+SELECT emp_name,
+       salary,
+       RANK() OVER (
+           ORDER BY salary DESC
+       ) AS salary_rank
+FROM employee;
+
+SELECT emp_name,
+       salary,
+       SUM(salary) OVER (
+           ORDER BY salary, emp_id
+           ROWS BETWEEN UNBOUNDED PRECEDING
+                    AND CURRENT ROW
+       ) AS running_salary_total
+FROM employee;
+
+SELECT emp_name,
+       department,
+       salary,
+       ROW_NUMBER() OVER (
+           ORDER BY salary DESC, emp_id
+       ) AS row_num
+FROM employee;
+
+select emp_name, department, salary, row_number() over(order by salary desc, emp_id) as row_num from employee;
+
+
+select emp_name, department, salary, row_number() over ( order by salary, emp_id) as row_s from employee;
+select emp_name, department, salary, row_number() over( order by salary, emp_id) as row_s from employee;
+
+select emp_name, department, salary, avg(salary) over(partition by department) from employee; 
+
+SELECT emp_name,
+       salary,
+       SUM(salary) OVER (
+           ORDER BY salary, emp_id
+           ROWS BETWEEN UNBOUNDED PRECEDING
+                    AND CURRENT ROW
+       ) AS running_salary_total
+FROM employee;
+
+
+SELECT emp_name, salary,
+       NTILE(4) OVER (
+           ORDER BY salary DESC, emp_id
+       ) AS salary_bucket
+FROM employee
+ORDER BY salary DESC, emp_id;
+
+
+select emp_name, salary  from (SELECT emp_name, salary,
+       ROW_NUMBER() OVER (
+           ORDER BY salary DESC, emp_id
+       ) AS row_num
+FROM employee)
+where row_num=2;
+
+select emp_name, salary  from (SELECT emp_name, salary,
+       ROW_NUMBER() OVER (
+           ORDER BY salary DESC, emp_id
+       ) AS row_num
+FROM employee) x
+where row_num=2;
+
+
+
+
+
+
+
+
+GRANT INSERT, UPDATE
+ON aug25.employee
+TO 'PGCP-AC'@'localhost';
+
+

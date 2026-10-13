@@ -1,0 +1,1235 @@
+What is data ?
+
+
+20
+
+201240520 
+
+abc  
+
+name: Aniket
+PRN: 202640520200
+Email: takmareaniket@gmail.com
+AGE:20
+
+
+Data: Data is the collection of raw inforamtion which does not have any meaning.
+
+Information: Data would be considered when it is kept togther with struture.
+
+Knowledge
+
+Wisdom
+
+
+: Introduction to DBMS
+Data vs. information, database, DBMS, RDBMS
+File system vs DBMS: drawbacks of file systems
+Terminology: table/relation, row/tuple, column/attribute, domain, schema, instance
+Types of DBMS: relational, object-relational, NoSQL (one example each)
+MySQL overview and clients: Monitor (CLI), MySQL Shell, Workbench
+Data models: conceptual, logical, physical
+
+
+Data further divided into majorly 2 parts 
+Structured data :  has predfined format
+Unstructured data : it does have predefined format
+Semi Structured data; : not in tabular format but in organised way
+
+json  { "StudentI" : "1", "name": "Aniket"}
+
+{
+  "library": {
+    "name": "Central Library",
+    "location": "Downtown Metro",
+    "established": 1998,
+    "books": [
+      {
+        "book_id": "BK-9081",
+        "title": "The Echo of Silicon",
+        "isbn": "978-3-16-148410-0",
+        "genres": ["Science Fiction", "Technology"],
+        "published_year": 2024,
+        "available_copies": 3,
+        "total_copies": 5,
+        "authors": [
+          {
+            "author_id": "AU-441",
+            "name": "Elena Rostova"
+          }
+        ]
+      },
+      {
+        "book_id": "BK-3342",
+        "title": "Foundations of Data Architecture",
+        "isbn": "978-0-13-235088-4",
+        "genres": ["Educational", "Computers"],
+        "published_year": 2021,
+        "available_copies": 0,
+        "total_copies": 2,
+        "authors": [
+          {
+            "author_id": "AU-102",
+            "name": "Marcus Vance"
+          },
+          {
+            "author_id": "AU-103",
+            "name": "Sarah Jenkins"
+          }
+        ]
+      }
+    ],
+    "members": [
+      {
+        "member_id": "MBR-5501",
+        "name": "Alex Mercer",
+        "email": "alex.mercer@email.com",
+        "membership_type": "Premium",
+        "join_date": "2023-04-12",
+        "is_active": true
+      },
+      {
+        "member_id": "MBR-8849",
+        "name": "Chloe Zhao",
+        "email": "chloe.z@email.com",
+        "membership_type": "Standard",
+        "join_date": "2025-01-10",
+        "is_active": false
+      }
+    ],
+    "loans": [
+      {
+        "loan_id": "LN-2026-0091",
+        "book_id": "BK-3342",
+        "member_id": "MBR-5501",
+        "borrow_date": "2026-09-28",
+        "due_date": "2026-10-12",
+        "status": "Checked Out"
+      }
+    ]
+  }
+}
+
+
+create table books_Management ( Book_Id int, Book_Info json);
+
+
+insert into books_Management ( book_id ) Values (1)
+
+insert into books_Management values (1, '{
+  "library": {
+    "name": "Central Library",
+    "location": "Downtown Metro",
+    "established": 1998,
+    "books": [
+      {
+        "book_id": "BK-9081",
+        "title": "The Echo of Silicon",
+        "isbn": "978-3-16-148410-0",
+        "genres": ["Science Fiction", "Technology"],
+        "published_year": 2024,
+        "available_copies": 3,
+        "total_copies": 5,
+        "authors": [
+          {
+            "author_id": "AU-441",
+            "name": "Elena Rostova"
+          }
+        ]
+      },
+      {
+        "book_id": "BK-3342",
+        "title": "Foundations of Data Architecture",
+        "isbn": "978-0-13-235088-4",
+        "genres": ["Educational", "Computers"],
+        "published_year": 2021,
+        "available_copies": 0,
+        "total_copies": 2,
+        "authors": [
+          {
+            "author_id": "AU-102",
+            "name": "Marcus Vance"
+          },
+          {
+            "author_id": "AU-103",
+            "name": "Sarah Jenkins"
+          }
+        ]
+      }
+    ],
+    "members": [
+      {
+        "member_id": "MBR-5501",
+        "name": "Alex Mercer",
+        "email": "alex.mercer@email.com",
+        "membership_type": "Premium",
+        "join_date": "2023-04-12",
+        "is_active": true
+      },
+      {
+        "member_id": "MBR-8849",
+        "name": "Chloe Zhao",
+        "email": "chloe.z@email.com",
+        "membership_type": "Standard",
+        "join_date": "2025-01-10",
+        "is_active": false
+      }
+    ],
+    "loans": [
+      {
+        "loan_id": "LN-2026-0091",
+        "book_id": "BK-3342",
+        "member_id": "MBR-5501",
+        "borrow_date": "2026-09-28",
+        "due_date": "2026-10-12",
+        "status": "Checked Out"
+      }
+    ]
+  }
+}');
+
+
+
+library.name
+
+select book_id, Book_Info->>'$.library.books.title' as book_title from books_Management;
+
+insert into books_Management values (1, '{
+  "library": {
+    "name": "Central Library",
+    "location": "Downtown Metro",
+    "established": 1998,
+    "books": [
+      {
+        "book_id": "BK-9081",
+        "title": "The Echo of Silicon",
+        "isbn": "978-3-16-148410-0",
+        "genres": ["Science Fiction", "Technology"],
+        "published_year": 2024,
+        "available_copies": 3,
+        "total_copies": 5,
+        "authors": [
+          {
+            "author_id": "AU-441",
+            "name": "Elena Rostova"
+          }
+        ]
+      },
+      {
+        "book_id": "BK-3342",
+        "title": "Foundations of Data Architecture",
+        "isbn": "978-0-13-235088-4",
+        "genres": ["Educational", "Computers"],
+        "published_year": 2021,
+        "available_copies": 0,
+        "total_copies": 2,
+        "authors": [
+          {
+            "author_id": "AU-102",
+            "name": "Marcus Vance"
+          },
+          {
+            "author_id": "AU-103",
+            "name": "Sarah Jenkins"
+          }
+        ]
+      }
+    ],
+    "members": [
+      {
+        "member_id": "MBR-5501",
+        "name": "Alex Mercer",
+        "email": "alex.mercer@email.com",
+        "membership_type": "Premium",
+        "join_date": "2023-04-12",
+        "is_active": true
+      },
+      {
+        "member_id": "MBR-8849",
+        "name": "Chloe Zhao",
+        "email": "chloe.z@email.com",
+        "membership_type": "Standard",
+        "join_date": "2025-01-10",
+        "is_active": false
+      }
+    ],
+    "loans": [
+      {
+        "loan_id": "LN-2026-0091",
+        "book_id": "BK-3342",
+        "member_id": "MBR-5501",
+        "borrow_date": "2026-09-28",
+        "due_date": "2026-10-12",
+        "status": "Checked Out"
+      }
+    ]
+  }
+}');
+
+
+
+
+
+CREATE TABLE students (
+    id INT
+    name VARCHAR(100),
+    profile JSON  
+);
+
+
+
+
+ {"skills": ["Python", "SQL"], "score": 92, "address": {"city": "Mumbai"} , "DOB": "11-12-1996"}
+ 
+ insert into student ( id, name, profile ) values (1, 'Yash', '{"skills": ["Python", "SQL"], "score": 92, "address": {"city": "Mumbai"} , "DOB": "11-12-1996"}');
+ 
+ 
+ File System Vs DBMS:
+ 
+                                Course
+	   PGCP-AC                    PGCP-BDA             PGCP-AI
+	  StudentInfo                 StudentInfo           Studentinfo
+	  Modules                     Module                 Module
+	  Result                      Result                  Result
+	  
+	  
+	  File System Drawback
+1. Data Redundancy : The same data may be stored in multiple files 
+2. Data Inconsistency : If the data is updated in one file but not in other related files, different files may contain different values or inforamtion.
+3. Difficulty in Data Access : 	  Retrieving required information may require writing a new program or script for particular data.
+4. Data Isolation : Data is scattered across different files and formats , making it difficult to combine and access it.
+5. Integrity Problem: 
+6.Security Problem:  File system generally provides limited and less flexible control over who can access or modify the data.
+7.Concurrent Access Problem: when multiple users access or update the same file simultaneously, data may become inconsistent or corrupted. 
+8.Automicity Problem: 
+
+
+Example File System:
+
+1.FAT: File Allocation TABLE
+2. NTFS: New Technology File System.
+3. HFS : Hierarchical file System. Used Mac OS
+4. Ext4:  Used in Linux Distributions
+
+DBMS: Database Management System: 
+ANSI definition : It is collection of programs that allows user to insert, update, delete and process.
+
+DBMS : Foxpro,  RDBMS: mysql, postgress, oracle, SQL, ms sql, 
+
+File System VS RDBMS: 
+
+Field     --- coulmn/attribute.
+File  ----- table, entity, relation
+Record  --- Row/tuple
+
+2. Relation between two files is maintained programmatically 
+2. Relation between two or more tables is maintained by keys
+
+3. More Programming is required in case of file system.
+3. Less Programming is required, (we write different queries to get the data)
+
+student : id (Primary key), name, prn(foreign Key), emailid 
+result : PRN(primary key), makrs, rank
+
+select student.id, student.name, student.prn, result.marks, result.rank from student, result 
+where student.prn=result.prn
+and student.name= 'RITIK'
+
+4. More time required for the s/w development. 
+4. less time required for the s/w development.
+
+5. High Network traffic.; 
+5. Low Network Traffic
+
+6.Slow and Expansive ( we need to different programms/scripts ) 
+6.Faster and less expansive 
+
+select * from student limit 100;
+
+7.Processing of the data is takes place at client machine in case of file systems
+7.In case RDBMS the processing of the data is takes place at the server.
+
+8. File level Locking is there in case of file syetem,
+8. In case of RDBMS, row level locking there, 
+
+9. Not suitable for multiple users
+9. Suitable for Multiple users
+
+10. Security concern : OS level security 
+10. Multiple level of secuirty : 
+username and password for mysql
+command level secuirty: we grant the permission to perticular user; ( to insert , to select, to create)
+
+
+Types Of DBMS: 
+1.Relational DBMS: 
+2. Object-Relational DBMS: 
+3. NoSql: 
+
+
+Data Models 
+1. Conceptual : It provides the high level view of the entities.
+2. Logical:  A logical data model organises these into a detailed database struture
+3. Physical: Specifes how that structure will actually be implemented and stored in particular DBMS. 
+
+e.g library management: Books, Members, Author, Borrow, Publisher, book_type
+
+Logical: Books : id, name, author, 
+Members: MemberId, Name, Role, 
+Author: Aut_Id, Auth_name, Auth_address
+Borrow: ID, Date,
+Publisher: ID, Date of Publisher
+Book_type:History, science, 
+
+
+
+DBMS:
+DQL: select 
+DML: Insert, update and delete : 
+DDL: Create, alter, drop and truncate
+DCL: Grant and revoke
+TCL: Transaction Control Lang. Rollback, commit, save point 
+
+
+show variables like 'charcter_set_server'
+
+
+
+
+create table demo
+( Id int, name char(20), emailid varchar(20));
+
+insert into demo (Id, name, emailid)
+values (1, 'Aniket', 'takmare@gmail.com'),
+(2, 'Rohit', 'Rohit@gmail.com'),
+(3, 'Akshay', 'Akshay@gmail.com');
+
+
+Alter command: Add, Modify, Change, Rename, Drop
+
+How to add column in existing table
+
+alter table table_name
+Add column column_name datatype;
+
+alter table student
+add column grade char(5);
+
+alter table student
+add column emailid char(5);
+
+alter table student
+modify emailid varchar(30);
+
+alter table student
+change name Student_name char(40);
+
+alter table student
+rename column student_age to age;
+
+rename table student to pgcpstudent;
+
+
+
+alter table student
+drop column grade;
+
+Drop table table_name;
+
+
+TCL : transaction , savepoint, rollback and commit;
+
+we can use this with insert, update and delete : DML
+we can not use this with create, alter, drop, truncate: DDL 
+
+update student set course='AdvanceJava' where course='Python'
+
+
+
+delete vs truncate vs drop
+1. delete will delete rows and we can use the where condition 
+2. table struture will be there
+3. we can use the  rollback 
+4. auto increament is not reseted.
+
+truncate
+1. it will delete all the rows.
+2. table structure will be there
+3. we cannot use the rollback
+4. auto increment is reset.
+
+drop
+1. delete all the rows 
+2. table structure is not there 
+3. we can not use the rollback
+
+
+create table employee ( empid int primary key auto_increment, empname varchar(20), deptno int, salary int, emailid varchar(30));
+
+insert into employee ( empname,deptno,salary, emailid )
+values 
+('ANIKET', 20, 50000, 'aniket@gmail.com'),
+('Sahil', 25, 55000, 'sahil@gmail.com'),
+('Aditya', 30, 60000, 'aditya@gmail.com');
+
+insert into employee (empid, empname, deptno, salary, emailid)
+values (10, 'Vishwa', 25, 60000, 'Vishwa@gmail.com');
+
+insert into employee ( empname,deptno,salary, emailid )
+values 
+('Shilsir', 20, 50000, 'Shil@gmail.com')
+
+
+insert into employee ( empname,deptno,salary )
+values 
+('Shilsir', 20, 50000, )
+
+
+insert into employee (empid, empname, deptno, salary, emailid)
+values (10, 'Milind', 25, 60000, 'Milind@gmail.com');
+
+Default : 
+
+create table department ( deptid int primary key, deptname varchar(25), salary int default 25000, location varchar(40) default 'Kharghar');
+
+insert into department (deptId, deptname, salary, location)
+values
+(1, 'Education', 50000, 'Juhu'),
+(2, 'Research', 60000, 'Bandra');
+
+
+Null =0 wrong
+Null ='' wrong 
+Null = 'Null' wrong
+Null means the value is unknown or not provided.
+
+temporary table:
+
+create temporary table employee_temp ( empId Int, empName varchar(20), salary Int, DeptName varchar(20));
+
+insert into department (deptId, deptname)
+values
+(3, 'Training'),
+(4, 'Testing');
+
+insert into employee_temp ( empId, empName, salary, DeptName)
+values(1, 'Shweta', 50000, 'Education'),
+(2, 'Vipul' , 60000, 'Training');
+
+
+update student set student_age = student_age+2 where id=6;
+
+
+Comparison Operators in mysql.
+
+1. = equal to 
+2. != <>
+3. > greater than 
+4. < less than
+5. >= greater than equal to
+6. <= less than equal to 
+
+
+Logical Operators 
+
+AND 
+
+OR 
+
+NOT
+
+
+In and Not 
+
+Datatypes: 
+
+Internally: 
+
+                                      Database
+									  
+									  
+									  
+									  TableSpace
+									  
+									  
+									  Pages
+									  
+									  
+									  Rows/tuplee
+
+
+Innodb : storage engine for mysql DBMS
+Page: Is block of database storage : default size of the is 16KB. 
+
+
+                    Page
+
+                       Records/rows/tuple
+					   Records/rows/tuple
+					   Records/rows/tuple
+					   Records/rows/tuple
+					   Records/rows/tuple
+
+
+
+Ram: Buffer pool vs Disk: 
+
+
+Buffer Pool: frequently used pages are stored in the buffer pool which is part your RAM.
+
+Disk: Database: 
+
+                              Query: 
+
+
+                  Check Buffer Pool 
+				  
+				  
+				  Is the required page is already present or Not 
+				  
+				  
+				  Yes                                  No
+				 Use Page                            Read Disk
+				 
+				 
+Datatypes: 
+
+Char  : in case of mysql we use utf8mb4 charcter_set is used and default is 4 bytes.
+255 characters 
+Char (20) :  allows any characters , default width 1
+char(n) : n is length, 
+name () --> Aniket -- 6____________
+we shuould always use char datatype when  the lenght of that column data is fixed:
+Pincode: 
+Mobile:
+Gender:
+
+
+Varchar(20): 65,535 bytes 
+name varchar(20) --> Aniket --- 6.... 
+
+Text: 
+
+tinytext: allows any char, max.capacity 255 
+Text: 65,535 
+Mediumtext: 16 MB
+Logntext: 4GB; 
+
+
+create table demoforText ( Id int, name varchar(20), Content Text);
+
+row is going to store -- > (id, name, referencepoint for the textdata) ----> page 
+
+overflowpage---> Content 
+
+select id, name, Content from demoforText;
+
+BLOB--> binary large Object : 
+Tinyblob-- (max. 255 bytes) 
+Blob( max. 65,535 bytes)
+mediumblob (max. 16,777,215 ) 16MB
+Longblob (max. 4,294,967,295) 4GB
+
+
+Blob-- > images, PDF files, audio files, small video, zip files, other binary files
+
+
+Blob is large in that case we similary use the concept for the this data. 
+
+
+enum : Fixed set.  transactionStatus ('Successful', 'Declined', 'Failed');
+
+Set : Group of values  Skills ('Java', 'CPP', 'Mysql');
+
+
+Integer: Singed or Unsigned: 
+Tinyint: 1 byte
+Smallint: 2 bytes of storage
+MediumInt: 3 bytes
+Int : 4 bytes,
+Bigint: 8 byte
+
+create table demo ( Id int unsigned )  -- +ve numbers / values. 
+
+Float:  4 bytes 
+   precision upto 7 decimal points
+   
+   
+Double : 8 bytes
+15-16 decimal precision
+
+
+Boolean : ture or false ( 1 or 0)
+
+Date and time: 
+
+Date : (YYYY-MM-DD) 
+date1-date2 -- > 
+
+Time : ('hh:mm:ss')or ('HHH:MMM:SSS')
+
+Datetime : ('YYYY-MM-DD hh:mm:ss')
+
+year: (YYYY)
+
+TimeStamp ('YYYY-MM-DD hh:mm:ss');
+
+2026-10-09 15:30:35 UTC
+
+
+
+Varchar 				 
+				                                     
+													 Put page in buffer pool
+													 
+													 Use the page 
+				  
+				  
+
+   
+
+
+
+
+
+What is constraint
+
+1. Unique: it will going prevent duplicates in that column, we can add multiple null values  
+
+2. Not Null: that will not allow to insert null values to that column, / not allowed to update the value to null.
+
+3. Primary key: 
+
+4 . Default : Supplies predefined value when an insert statement does not provide a value for that column;
+
+5. Check : Ensure that the value that we inserting satisfies the condition; 
+
+Create table ConstraintDemo
+( Id Int Not Null, 
+Name varchar(20) Unique ,
+ Emailid  varchar (30)Unique, 
+ Age Int Check (age > 18), 
+ Department varchar(10) default 'IT');
+ 
+ 
+
+
+Create table ConstraintDemo2
+( Id Int, 
+Name varchar(20),
+ Emailid  varchar (30), 
+ Age Int , 
+ Department varchar(10),
+ 
+ Constraint  primary key (Id),
+ constraint  Unique (Name)
+ 
+ );
+ 
+ 
+ 
+ In case of insert and update 
+ 
+Case1: Duplicate primary key is not allowed.
+Case2: We can not insert a null values or update to null value if the column has not null constraint
+case3: We can not insert duplicate values or update to duplicate values if the column has unique constraint
+Case4: we can not insert or update the value of the column which does satisfies the condition given in check constraint.
+
+
+Keys:
+A key is a column or group of column used to identify records/rows uniquely or established relationship between the tables.
+
+table : passport_registration : 
+reg_Id,Name, Gender, emailid, mobile, age, aadhaar_no, Pan_no, Photo, DOB, address 
+
+reg_id== unique 
+emailid== unique
+mobile==unique
+aadhaar_no== unique
+pan_no== unique
+photo== unique ( will not be considered as key)
+
+Types of keys: 
+
+1. Super key: A super key is any column or combination of columns that can uniquely identify a row. 
+reg_id, emailid , mobile 
+
+
+reg_id+name --> super key
+Mobile+ name --> super key
+Mobile+Pan_no --> super key
+
+
+Candidate Key: a candidate key is minimal super key. 
+
+reg_id--> candidate key 
+emailidid--> candidate key
+mobile, aadhaar_no, pan_no --> candidate key.
+
+reg_id+ name -- is not candidate key . because reg_id itself alone represent uniquely . 
+
+Primary key: primary key is the candidate key selected as the main identifier for record/row.
+reg_id --> primary key 
+
+1. Duplicates are not allowed. 
+2. Null valeus are not allowed ..  --> unique+not null constraints are applied by default to this column/attribute.
+3. A table can have only one primary key...
+4. Mysql automatically creates a unique index for the primary key.
+5. A primary key identifies records and can be referenced by foreign key .
+6. It is recommanded that each table has primary key.
+
+Alternate Key--> 
+an alternate key is a candidate key that was not selected as primary key. 
+
+
+Composite primary key: A composite primary key combines two or more columns to uniquely identify a row.
+
+
+surrogate key : A surrogate key is an artificail identifier created by the system instead of using real -world attribute as primary-key.
+1. the database generates the ID automatically by using auto_increment
+2. the key does not depend on real-world indentifier
+3. it usally compact and remains stables, 
+4. 
+
+Foreign key: 
+A foreign key connects table by referencing a primary key or eligible unique key in another table.
+
+create table passport_registration 
+( Id Int primary key, Name varchar(20),
+ Aadhaar Int, 
+ Pan_no Int);
+
+create table passport_application 
+( app_id int primary key, 
+application_date date, 
+status varchar(15),
+registration_id int,
+
+Foreign key (registration_id) references passport_registration(id))
+
+
+regisrtation_table -- reg_id, name, emailid ,
+Rohit -- IT -- 1, ac, bda, ai
+
+
+eligbile table --->  eligbileid, coursename, reg_id .
+                        1,  ac , 1
+						2, bda, 1
+						3, ai, 1 
+
+insert into passport_registration ( id, name, aadhaar, pan_no ) 
+values
+(1, 'Aniket', 1234567,1234),
+(2, 'Rohit', 45234, 456),
+(3, 'Akshay' , 12378, 789);
+
+insert into passport_application ( app_id, application_date, status, registration_id)
+values
+(1, '2026-09-10' , 'Reject', 1),
+(2, '2026-10-01' , 'Submitted' , 1),
+(3, '2025-05-15' , 'Successful' , 2);
+
+
+
+
+
+
+create table passport_application 
+( app_no int primary key, 
+application_date date, 
+status varchar(15),
+registration_id int,
+
+Foreign key (registration_id) references passport_registration(id)
+On delete cascade
+On update cascade
+);
+
+alter table passport_application 
+drop foreign key;
+
+
+ 
+
+alter table passport_application
+drop foreign key passport_registration;
+
+insert into passport_application ( app_no, application_date, status,registration_id)
+values 
+(1, '2026-08-10', 'rejected', 3),
+(2, '2025-10-05', 'Successful', 12),
+(3, '2026-10-10', 'Submitted' , 3);
+
+
+On delete set null 
+
+On update set null;
+
+create table passport_application 
+( app_no int primary key, 
+application_date date, 
+status varchar(15),
+registration_id int,
+Constraint fk_passport_application_reg
+Foreign key (registration_id) references passport_registration(id)
+On delete set null
+On update set null
+);
+
+
+alter table passport_application
+add constraint fk_passport_application_reg
+Foreign key (registration_id) references passport_registration(id)
+On delete restrict 
+On update restrict;
+
+insert into passport_application ( app_no, application_date, status,registration_id)
+values 
+(1, '2026-08-10', 'rejected', 1),
+
+
+Aggregate functions: Count(*), Count(column), sum, avg, min, max;
+
+logical order of queries execution
+1. Form
+2. Where
+3. Group by
+4.Having
+5. order by
+6. limit
+7. offset 
+
+(2, '2025-10-05', 'Successful', 13),
+(3, '2026-10-10', 'Submitted' , 1);
+
+
+ select id, name, course from student_backup
+    intersect
+     select id, student_name, course from student;
+	 
+	 
+	 select id, student_name, course from student
+	 except
+	 select id, name, course from student_backup;
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	Relational algebra and its mapping to sql: 
+	
+	
+	selection:
+	
+	Porjection (
+	
+	Union  (U)-- 
+	
+	Intersection (
+	
+	Difference (-)
+	Except
+	
+	
+	
+	Joins: 
+	
+	join combines rows from two or more tables using a related column or specific condition.
+	
+	what are the types joins:
+	1. Cross join : 
+	
+	create table department (
+	dept_id int primary key, dept_name Varchar (20) Not null);
+	
+	create table student 
+	( student_id int primary key, name varchar (25) not null,
+	dept_id int ,
+	mentor_id int,
+	constraint fk_student_department
+	foreign key (dept_id) references department (dept_id),
+	constraint fk_student_mentor
+	foreign key (mentor_id) references student (student_id) );
+	
+	
+	insert into department( 10, 'Computer')
+	(20, 'IT'),
+	(30, 'Electronics'),
+	(40, 'Mechanical');
+	
+	
+	insert into student
+	
+	
+	Cross Join:
+	
+	it is a join that combines every row from the first table with every row of the second table 
+	
+	select s.name, d.dept_name
+	from student as s 
+	cross join department as d
+	
+	purpose: to produce every possible combination of rows from the two tables:
+	condition : no conditon
+	
+	Inner Join: 
+	returns only rows for which the join condition finds a match in both tables:
+	
+	select student.student_id, student.name , department.dept_name
+	from student 
+	inner join department 
+	On student.dept_id=department.dept_id order by student.student_id;
+	
+	Equi Join:
+	(=)
+	
+	an equi join is a join in which the matching condition uses the equality operator (=).
+	
+	select s.student_id,s.name, d.dept_name
+	from student as s
+	join department as d
+	On s.dept_id=d.dept_id;
+	
+	
+	Old syntax: using where clause 
+	
+	select s.student_id,  s.name, d.dept_name
+	from student as s , department as d
+	where s.dept_id=d.depart_id;
+	
+	
+	Join with using 
+	using is convenient when both the tables have a join column with exactly same name.
+	
+	select s.student_id, s.name, d.dept_name
+	from student s 
+	join department d
+	Using (dept_id);
+	
+	
+	Natural Join:
+	Natural join automatically matches columns that have same name in both the tables;
+	
+	Select s.student_id, s.name, d.dept_name, d.dept_id
+	from student as s
+	natural join department as d;
+	
+	Non-equi join: 
+	the join condition comapres a vlaue with range instead of matching two columns usign equality.
+	
+	select s.student_id, s.name, s.dept_id as my_dept_id , d.dept_id 
+	from student as s
+	join department as d
+	On s.dept_id > d.dept_id;
+	
+	Left join:
+	
+	it returns every row from the left table with matching row from the right table:
+	
+	select s.student_id, s.name, d.dept_name
+	from student s
+	left join department d
+	On s.dept_id=d.dept_id
+	order by s.student_id;
+	
+	
+	right join:
+	
+	it returns every row from the right table and matching rows from the left table. If no match exist, left -table columns contains null;
+	
+	select s.student_id, s.name, d.dept_name
+	from student s 
+	right join department d
+	On s.dept_id=d.dept_id
+	order by s.student_id;
+	
+	
+	
+	Full outer join:
+	
+	select s.student_id, s.name, d.dept_name
+	from student as s
+	left join department as d
+	On s.dept_id=d.dept_id
+	Union
+	select s.student_id, s.name, d.dept_name
+	from student as s 
+	right join department as d
+	On s.dept_id=d.dept_id;
+	
+	Self Join:
+	
+	
+	select s.name as student_namem,
+	m.name as mentor_name
+	from student as s
+	right join student as m
+	On s.mentor_id=m.student_id
+	order by s.student_id;
+	
+	
+	
+	+--------+----------+------------+----------+--------------+
+| emp_id | emp_name | department | salary   | joining_date |
++--------+----------+------------+----------+--------------+
+|      1 | Amit     | IT         | 60000.00 | 2022-01-10   |
+|      2 | Priya    | IT         | 80000.00 | 2021-06-15   |
+|      3 | Rahul    | IT         | 80000.00 | 2023-03-20   |
+|      4 | Sneha    | HR         | 50000.00 | 2022-08-01   |
+|      5 | Neha     | HR         | 60000.00 | 2021-04-12   |
+|      6 | Karan    | Sales      | 45000.00 | 2023-01-05   |
+|      7 | Pooja    | Sales      | 55000.00 | 2022-11-18   |
+|      8 | Vikram   | Sales      | 55000.00 | 2021-09-22   |
+|      9 | Meera    | IT         | 40000.00 | 2024-02-14   |
+|     10 | Arjun    | HR         | 50000.00 | 2023-07-09   |
++--------+----------+------------+----------+--------------+
+	
+	Window Function: 
+	
+	Over()
+	
+	select emp_name, salary,
+	Avg(salary) over() as avg_salary
+from employee;	
+	
+	
+	
+	Over()empty
+	
+	partition by 
+	
+	over ( partition by)
+	
+	Over (order by)
+	
+	select emp_name, salary,department,
+	sum(salary) over( order by salary, emp_id  
+	                 Rows between unbounded preceding and current row ) as running_total
+	from employee;
+	
+	
+	Row_number()
+	
+	select emp_name, salary, 
+	row_number() over(order by salary, emp_id) as row_number123
+	from employee;
+	
+	Rank();
+	
+	select emp_name, salary,
+	Rank () over ( order by salary desc ) as rank_based_on_salary
+	from employee  ;
+	
+	
+	Dense_rank()
+	
+	select emp_name, salary,
+	Dense_rank() over (order by salary desc ) as dense_rank_on_salary 
+	from employee;
+	
+	
+	NTILE()
+	
+	select emp_name, salary,
+	Ntile(2) over ( order by salary desc, emp_id)  as salary_bucket
+	from employee;
+	
+	
+	aggregate window: sum() over()
+	
+	select emp_name, salary,
+	Sum(salary) over () as total_salay
+	from employee;
+	
+	
+	select emp_name, salary, department,
+	Sum(salary) over ( partition by department) as total_dept_salary
+	from employee;
+	
+	select emp_name, department,
+	count(*) over (partition by department) as emp_per_department
+	from employee;
+	
+	
+	select emp_name, salary,department,
+	sum(salary) over( order by salary, emp_id  
+	                 Rows between  2 preceding and current row ) as running_total
+	from employee;
+	
+	LAG() and LEAD()
+	
+	select emp_name, joining_date , salary,
+	Lag(salary) over ( order by joining_date , emp_id ) as previous_salary,
+	Lead(salary) over ( order by joining_date, emp_id) as next_salary
+	from employee order by joining_date, emp_id;
+	
+	CTE: common table expression:
+
+	With overall_average as (
+	select avg(salary) as avg_salary 
+	from employee )
+	
+	
+	select e.emp_name, e.department, e.salary
+	from employee as e
+	cross join overall_average  AS oa
+    On e.salary <oa.avg_salary ;	
+	
+	
+overall_average :   +--------------+
+| avg_salary   |
++--------------+
+| 57500.000000 |
++--------------+
+
+
+chained CTEs
+
+with department_avg as (
+select department, avg(
+salary) as avg_salary 
+from employee 
+group by department),
+above_avg as ( select e.emp_name, d.department, e.salary, d.avg_salary
+from employee as e
+Join department_avg  as d 
+On e.department = d.department
+where e.salary > d.avg_salary
+)
+select * from above_avg order by department, salary desc; 
+
+
+
+select department, avg(salary) as avg_salary from employee group by department
+department_avg
+ +------------+--------------+
+| department | avg_salary   |
++------------+--------------+
+| IT         | 65000.000000 |
+| HR         | 53333.333333 |
+| Sales      | 51666.666667 |
+
+
+Recursive CTEs
+with recursive numbers as (
+
+select 1 as n  -- n=1
+
+union all
+
+select n+1 -- n+1,2, 3,4,5,6,7,8,9,10
+from numbers 
+where n<10
+)
+select n from numbers;
+
+
+
+
+

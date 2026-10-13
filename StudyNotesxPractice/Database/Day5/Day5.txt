@@ -1,0 +1,172 @@
+ create table employee ( emp_id int primary key,
+     emp_name varchar (30),
+     salary decimal (10,2),
+     dpet_id int,
+     manager_id int,
+     constraint fk_department_dept_id
+     foreign key (dpet_id) references department(dpet_id));
+	 
+	 
+	 insert into  employee (emp_id, emp_name, salary, dpet_id, manager_id)
+    values (1, 'Aniket' , 60000, 10, 1),
+     (2, 'Pranav', 50000, 20, null),
+	 (3, 'Omkar', 70000, 30, 2),
+	 (4, 'Abhishek', 65000, 10, 2),
+	 (5, 'Aditya', 80000, 20, 1),
+	 (6, 'Shivraj', 50000, 40, null),
+	 (7, 'Malkeet', 45000, 30, 3);
+	 
+	 
+	 Scalar subquery: Return exaclty one values: one column and one row:
+	 
+	 sum() ,avg(), max(), min()
+	 
+	 select emp_name, salary from employee where salary > ( select avg(salary) from employee);
+	
+	
+	Sigle-row subquery: it return one row, multiple columns ;
+	
+	select emp_id, emp_name, salary from employee where 
+	(salary, dpet_id) = ( select salary, dpet_id from employee where emp_name='Aniket');
+	
+	
+	select emp_name, salary from employee where salary ='60000' and dpet_id=10;
+	
+	+----------+---------+
+| salary   | dpet_id |
++----------+---------+
+| 60000.00 |      10 |
+
++----------+---------+
+
+
+Multi-row subquery: 
+
+select emp_name, salary, dpet_id from employee
+where dpet_id in  (select dpet_id from department where  dept_name in ('IT', 'Sales'));
+
+multi-column subquery: 
+
+return two or more columns; 
+
+select emp_name, salary, dpet_id 
+from employee 
+where (salary, dpet_id) In   (select Min(salary),dpet_id 
+from employee group by dpet_id);
+
+
+where subquery : 
+
+
+In, Any , ALL : 
+IN : checks whether a value matches any value from returned result by the subquery:
+
+Any : the comparison is true if it is true for at least one returned value.
+
+select emp_name, salary
+from employee 
+where salary > Any select salary from employee where dpet_id=20);
+
+
+ALL
+
+select emp_name, salary
+from employee 
+where salary > All (select salary from employee where dpet_id=10);
+
+All: comparison must be true for every returned value;
+
+
+correlated subquery: a correlated subquery refers to a column from outer query;
+select e.emp_name, e.salary, e.dpet_id
+from employee e
+where e.salary >  ( select avg(salary) from employee e2 
+where e.dpet_id= e2.dept_id);
+
+
+1. create user 
+2. grant privileges 
+3. revoke privileges
+
+
+ grant all privileges on *.* 
+ to 'username'@'host'
+ with grant option;
+ 
+ grant all privileges on databasename.*
+ to 'username'@'host';
+ 
+ grant all privileges on databasename.table_name
+ to 'username'@'host'
+ 
+ grant select (column_name1,column_name2), update(column_name1, column_name3)
+on databasename.table_name 
+to 'username'@'host'
+  ;
+  
+  
+  Views: 
+  to avoid using compl
+  
+  
+  it is going to store the defination of the query but not data;
+  
+  
+  select * from employee;
+  
+  1. filtered view:
+  create view sales_employees as
+  select emp_id, emp_name, salary 
+  from employee where dept_id =20;
+  
+  
+  create view sales_employee_with_dept_name as 
+  select e.emp_id, e.emp_name, e.salary, d.dept_name
+  from employee e , department d
+  where e.dept_id=d.dept_id and e.dept_id=20;
+  
+  insert into sales_employees ( emp_id,emp_name,  salary ) 
+  values ( 16, 'Vipul', 74000);
+  
+  create view Average_salary_per_dept as 
+  select dept_id, avg(salary) from employee group by dept_id;
+  
+  update Average_salary_per_dept
+  set avg(salary) = 71000 where dept_id=10;
+  
+  
+  ACID properties: 
+  
+  A: Atomicity: all operation in one transaction are completed as one unit, or the uncommitted changes are rolled 
+  back if the transaction is failed.
+  
+  id amit = 10000
+  
+  1000 - balace update = 9000
+  
+  aniket =5000 --- balance update =6000
+  
+  Start tranasaction
+  
+  update account 
+  set balance = balance- 1000
+  where user='amit'
+  
+  update account
+  set balanace = balance +1000
+  where user='aniket'
+  
+  --if the both the operation succeed:
+  commit;
+  
+  --if an operation fails then all operation should be rolledback.
+  
+  C: Consistency: preserve the rules:
+  
+  check (balance >=0);
+  
+  Isolation : control concurrent tranasactions
+  
+  Durability: 
+  
+  Atomicity: All or nothing -- 
