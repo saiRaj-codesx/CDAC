@@ -1,0 +1,147 @@
+Q1]     CREATE DATABASE Restaurant;
+	USE Restaurant;
+
+
+	CREATE TABLE Category(
+	category_id INT,
+	category_name VARCHAR(50)
+	);
+
+
+	CREATE TABLE Dish(
+	dish_id INT,
+	dish_name VARCHAR(50),
+	category_id INT,
+	price DECIMAL(10,2),
+	dish_rank VARCHAR(50)
+	);
+
+        CREATE TABLE Customer(
+	customer_id INT,
+	customer_name VARCHAR(50),
+	phone VARCHAR(50)
+	);
+
+        CREATE TABLE Orders(
+	order_id INT,
+	customer_id INT,
+	order_date DATE
+	);
+
+        CREATE TABLE OrderSpecs(
+	specs_id INT,
+        order_id INT,
+        dish_id INT,
+        quantity INT
+	);
+
+
+Q2]     ALTER TABLE Category ADD PRIMARY KEY(category_id);
+        ALTER TABLE Dish ADD PRIMARY KEY(dish_id);
+        ALTER TABLE Customer ADD PRIMARY KEY(customer_id);
+        ALTER TABLE Orders ADD PRIMARY KEY(order_id);
+        ALTER TABLE OrderSpecs ADD PRIMARY KEY(specs_id);
+
+
+
+
+Q3]    INSERT INTO Category Values
+	(1,"Chinese"),(2,"Indian"),(3,"Punjabi"),(4,"Italian"),(5,"Afgani");
+	
+	INSERT INTO Dish Values
+	(101,"Veg Noodles",1,160.00,"Regular"),
+	(102,"Veg Special Thali",1,200.00,"Popular"),
+        (103,"Dal Makhani",2,180.00,"Special"),
+        (104,"Pasta",3,360.00,"Popular"),
+	(105,"Chicken Afgani",4,260.00,"Regular");
+
+	INSERT INTO Customer Values
+	(1,"Sai","9090796659"),
+        (2,"Raj","9093079659"),
+        (3,"Neha","9019079659"),
+	(4,"Amit","9209079659"),
+     	(5,"Rahul","9009079659");
+
+        INSERT INTO Orders Values
+	(201,1,"2026-10-11"),
+	(202,2,"2026-10-12"),
+	(203,3,"2026-10-13"),
+	(204,4,"2026-10-14"),
+	(205,5,"2026-10-15");
+
+        INSERT INTO OrderSpecs Values
+        (1,201,101,2),
+    	(2,202,102,1),
+ 	(3,203,103,3),
+ 	(4,204,104,1),
+ 	(5,205,105,2);
+
+
+
+
+Q4]     ALTER TABLE Dish
+	ADD FOREIGN KEY(category_id) REFERENCES Category(category_id);
+
+	ALTER TABLE Orders 
+	ADD FOREIGN KEY(customer_id) REFERENCES Customer(customer_id);
+
+	ALTER TABLE OrderSpecs
+	ADD FOREIGN KEY(order_id) REFERENCES Orders(order_id);
+	
+
+
+
+Q5]   SELECT * FROM Dish 
+      WHERE price < 250 OR category_id=4;
+
+
+
+Q6]   SELECT dish_name,category_id,price,
+	RANK() OVER(ORDER BY price DESC) as dish_rank
+	FROM Dish;
+
+
+
+Q7] SELECT category_id, COUNT(*) AS total_dishes
+    FROM Dish
+    GROUP BY category_id;
+
+
+Q8] SELECT dish_name,price
+    FROM Dish 
+    WHERE price=(SELECT MAX(price) FROM Dish);
+
+
+Q9] CREATE VIEW DishView AS 
+    SELECT dish_id,dish_name,price
+    FROM Dish;
+	
+    SELECT * FROM DishView;
+
+    UPDATE DishView 
+    SET price=240.00
+    WHERE dish_id=101;
+
+    SELECT * FROM Dish 
+    WHERE dish_id=101;
+
+
+
+Q10]  SELECT d.dish_name,c.category_name
+      FROM Dish d
+      LEFT JOIN Category c ON
+      d.category_id=c.category_id;
+
+
+Q11]  CREATE TEMPORARY TABLE ChineseMenu AS
+      SELECT dish_id, dish_name, price 
+      FROM Dish 
+      WHERE category_id = 1;
+
+      SELECT * FROM ChineseMenu;
+
+      DROP TEMPORARY TABLE ChineseMenu;
+	
+
+Q12] CREATE PROCEDURE CountDishesByCat(
+	IN p_category

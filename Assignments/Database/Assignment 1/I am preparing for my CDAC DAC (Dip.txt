@@ -1,0 +1,110 @@
+I am preparing for my CDAC DAC (Diploma in Advanced Computing) Database Technologies (DBT) exam. I will provide you with the next topics from my syllabus.
+
+Your task is to create **detailed, exam-oriented study notes for every topic I provide**, following the same teaching style as an experienced ,top DBMS and MySQL faculty member.
+
+### 1. Explain Concepts in Depth
+
+- Explain every topic from the basics to the level required for CDAC exams.
+- Use simple English that a beginner can understand.
+- Explain what a concept is, why it is used, how it works, and when to use it.
+- Do not skip important details or oversimplify topics that need deeper explanation.
+- Use practical examples wherever possible.
+- Also if you think repeating something is not needed then dont do it but first think about it.
+
+### 2. MySQL Syntax and Practical Examples
+
+- Provide correct MySQL syntax for relevant commands.
+- Explain each important clause and keyword.
+- Use realistic tables such as `employees`, `departments`, `students`, `orders`, and `products`.
+- Include sample data and expected output wherever useful.
+- Show step-by-step execution or dry runs for confusing queries.
+- Explain common errors and how to correct them.
+
+### 3. Important Comparisons
+
+Explain confusing concepts through comparison tables, such as:
+
+- Similar commands and their differences.
+- Similar SQL operators and their behavior.
+- Different data types and their use cases.
+- Concepts that look similar but behave differently in MySQL.
+
+Include comparisons only when they help understanding or exam preparation.
+
+### 4. CDAC Exam Traps
+
+Highlight tricky points that can appear in MCQs, including:
+
+- Edge cases and exceptions.
+- `NULL` behavior.
+- Operator precedence.
+- MySQL-specific behavior.
+- Common misconceptions.
+- Syntax differences and restrictions.
+- Output-based questions where a small change in a query changes the result.
+
+Clearly label these as **Exam Trap**, **Important**, or **Remember** when appropriate.
+
+### 5. Practical SQL Examples
+
+For each important SQL concept:
+
+- Provide the query.
+- Explain how it works.
+- Show the result or expected behavior.
+- Explain why the result occurs.
+- Include alternative approaches when useful.
+
+Do not include unnecessary code and repetition just for the sake of length.
+
+### 6. CDAC-Level MCQs
+
+After completing the notes, generate ** multiple-choice questions** on your judgement how much is sufficient for it.
+
+Requirements:
+
+- Questions must be based strictly on the topics I provide.
+- Difficulty should be not medium ,medium to hard, appropriate for CDAC exams.
+- Include conceptual, syntax-based, output-prediction, query-tracing, and tricky edge-case questions.
+- Include SQL code snippets wherever appropriate.
+- Make the options plausible, with only one correct answer unless explicitly stated otherwise.
+- Avoid repetitive, overly easy, or unrelated questions and.
+- Also generate the mcq in parts like im giving syllabus in parts and decide what should be the number.
+
+
+**Most importantly, show the correct answer and a clear explanation immediately after each question.** Do not put all answers in a separate answer key at the end.
+
+Use this format:
+
+**Q1. [Question]**
+
+A. Option A\
+B. Option B\
+C. Option C\
+D. Option D
+
+**Correct Answer:** B. [Answer]
+
+**Explanation:** Explain why it is correct and, where useful, why the other options are incorrect.
+
+### 7. Final Revision Section
+
+At the end, include:
+
+- A concise revision summary.
+- Important syntax to remember.
+- Key differences in table format.
+- Common mistakes to avoid.
+- The most important facts to revise just before the exam.
+
+### 8. Instructions to Follow
+
+- Cover every topic I provide without skipping subtopics.
+- Maintain a logical order, from fundamentals to advanced concepts.
+- Avoid unnecessary repetition of topics already covered unless a quick recap is needed to explain a new concept.
+- Be technically accurate and use MySQL-specific behavior where applicable.
+- If a topic is complex, explain it thoroughly rather than giving a short definition.
+- Do not assume that I already understand advanced SQL concepts.
+- Focus on both conceptual understanding and practical exam performance.
+
+I will now provide the **next topics from my DBT syllabus in different parts that can be 4 or 5 or 6 also**. Start with those topics, avoid repeating the completed material unnecessarily, and follow all the instructions above.
