@@ -1,0 +1,109 @@
+Web Application
+
+Application:
+
+Desktop Apps : directly installed on the system
+
+Web Apps : need a browser and internet
+youtube.com flipkart.com amazon.in
+
+Working of web application:
+
+Client
+Server: 
+1.to make our web app accessible for everyone 
+2. its not practically possible to store the large data, process large data on the local 
+
+
+Server will contain the entire app, contain entire data - database, server will execute all the operations on that application
+
+client: a web browser -> will send a request on server -> server accepts the request -> server will process the request -> respond to the client
+
+
+Development:
+1. Frontend: UI screen
+	     HTML: Hyper Text Markup Language: is used to create a skeleton/structure
+		    Whatever is visible on the browser is created using html 
+
+	     CSS: cascading style sheet :  style a web page
+
+	     JAVASCRIPT: to perform any operation on the browser/client side 
+
+	     React Js
+	     Tailwind Css
+		Angular
+
+
+2. Backend: processing part -> server -> App Logic + Database 
+
+	App Logic:JavaScript 
+	Database: MySQL, Mongo DB
+
+
+Client and Server
+Request and response 
+
+1. Client will send a request to server
+2. Server will accept the request and will process it
+3. Server will send the response to the client 
+
+Technical Aspects of Request and Response:
+
+Request:
+1. If we have to send a request, then we need the address/url of a server
+	ip address 192.168.1.2 / www.flipkart.com / www.amazon.in
+
+2. Request Method: Purpose of the request -> GET POST PUT DELETE PATCH OPTIONS
+
+Response:
+1. Data will be there
+2. Status: Using status a client is going to know what happened at the server side with the request. 
+Server along with the data will always give the status also.
+
+Status -> Code + Message
+	  200 201 202 ... 299
+	  300 301 302 ... 399
+	  400 401 402 ... 499 failure is due to client
+	  500 501 502 ... 599 failure due to server
+
+	  200 OK
+          400 BAD REQUEST , 401 UNAUTHORIZED
+          500 INTERNAL SERVER ERROR 
+
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
