@@ -1,0 +1,275 @@
+rows and columns -> table
+table box -> rows -> columns
+
+<table>
+	<tr>
+		<td>id</td>
+		<td>Name</td>
+		<td>Phone</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>Nitin</td>
+		<td>78888111</td>
+
+	</tr>
+	<tr>
+		<td>2</td>
+		<td>Suresh</td>
+		<td>8999911</td>
+
+	</tr>
+</table>
+
+by default the table borders has been set to 0
+
+cellpadding: spaces inside of the cell
+cellspacing: spaces outside of the cell
+
+<table border="1" cellpadding="10" cellspacing="0">
+
+   <table border="1" cellpadding="10" cellspacing="0">
+        <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>Phone</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Nitin</td>
+            <td>78888111</td>
+
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Suresh</td>
+            <td>8999911</td>
+
+        </tr>
+    </table>
+
+semantic tags : tags which are doing the same thing but provides a better code readability
+
+<table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Nitin</td>
+                <td>78888111</td>
+
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Suresh</td>
+                <td>8999911</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+forms: 
+<form> tag is not used to display the form input field
+<form> tag will collect the entire form data and can submit it to the server
+
+<form action="https://www.mydataserver.com" method="POST">
+
+</form>
+
+action: contain a url of the server where the data has to be submitted
+method: value of request method 
+
+in the absence of any of the request method then by default GET method will be considered 
+
+3 types of buttons:
+1. plain button: its a plain button which doesn't have any predefined functionality, its the developer only who has to define its functionality
+<input type="button" value="Click me">
+
+2. submit button: its functionality is predefined, it is used to submit the form
+<input type="submit">
+
+3. reset button
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+selector{
+	property:value;
+
+}
+</style>
+
+types of selectors:
+
+1. tag selector : name of the tag, this selector will select all the matching tags 
+
+2. id selector : id is used to identify the elements uniquely
+	#head-1{
+                color: red;
+            }
+	 <h1 id="head-1">Hello</h1>
+<html>
+    <head>
+        <title>Css demo</title>
+        <style>
+            #head-1{
+                color: red;
+            }
+            #head-2{
+                color: green;
+            }
+            #head-3{
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="head-1">Hello</h1>
+        <h1 id="head-2">Heading 2</h1>
+        <h1 id="head-3">Heading 3</h1>
+        
+    </body>
+</html>
+
+3. class selector: when multiple elements has to be identified commonly 
+<html>
+    <head>
+        <title>Css demo</title>
+        <style>
+           .blue-font{
+            color: blue;
+           }
+        </style>
+    </head>
+    <body>
+        <h1>Hello</h1>
+        <h1 class="blue-font">Heading 2</h1>
+        <h1>Heading 3</h1>
+        <p class="blue-font">para 1</p>
+        <p>para 2</p>
+        <span>span 1</span>
+        <span>span 2</span>
+        <span class="blue-font">span 3</span>
+        <!-- 2nd h1, 1st p, 3rd span blue -->
+    </body>
+</html>
+
+* universal selector
+
+*{
+
+
+}
+
+id > class > tag selector > *
+
+
+types of css: based on where we are writing the css code
+
+1. internal css: css written within the same html file inside of the style tag 
+
+2. external css: css written outside of the html, inside of a .css file, we should then link the external css with the html
+
+3. inline css: css written directly inside of a tag using style attribute
+<p style="color: red;">This is para 1</p>
+
+
+inline > internal > external
+
+
+p{
+                font-size: 24px;
+                font-family: 'Segoe Ui Light';
+                font-weight: 900;
+                /* font-style: italic; */
+                /* font-variant: small-caps; */
+                text-transform: capitalize;
+		text-decoration: line-through;
+            }
+
+div -> to create a division/section on a web page
+
+<html>
+
+<head>
+    <title>Css demo</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            background-color: green;
+            color: white;
+            border-width: 10px;
+            border-color: black;
+            border-style: solid;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <h3>This is heading</h3>
+        <p>this is dummy para</p>
+    </div>
+</body>
+
+</html>
+
+
+two types of spaces are there :
+
+1. internal : padding property -> padding-left padding-top padding-right padding-bottom padding 
+2. external : margin property -> margin-left margin-right margin-bottom margin-top margin
+
+Different ways of applying the colors
+
+1. name of color
+2. hexadecimal value : #3b5998 #671t43
+3. rgb() function: rgb(0-255, 0-255, 0-255)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

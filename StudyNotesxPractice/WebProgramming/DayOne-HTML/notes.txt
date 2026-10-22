@@ -1,82 +1,97 @@
-Web Application
+HTML: Hyper Text Markup Language
 
-Application:
+HTML is used to create a skeleton/structure 
+HTML is used to display data on a web page
 
-Desktop Apps : directly installed on the system
+.html -> file
 
-Web Apps : need a browser and internet
-youtube.com flipkart.com amazon.in
+html code -> tags only
 
-Working of web application:
+with the help of tags we can display things on the web page
+HTML has all the predefined tags
+HTML is case insensitive 
+<form> <FORM> <fOrM>
+HTML is error free
 
-Client
-Server: 
-1.to make our web app accessible for everyone 
-2. its not practically possible to store the large data, process large data on the local 
+Two types of tags:
 
+1. Container tag: both opening and the closing <form> </form> <body> </body> 
+2. Empty tag: only opening, these tags don't have any scope <br> <img>
 
-Server will contain the entire app, contain entire data - database, server will execute all the operations on that application
+<html>
+    <head>
+        <title>My first page</title>
+    </head>
+    <body>
+        <p>hello world</p>
+    </body>
+</html>
 
-client: a web browser -> will send a request on server -> server accepts the request -> server will process the request -> respond to the client
+p -> every p will always be started from a new line
+span -> span can sit in a same line 
 
+6 heading tags 
+ 
+h1 h2 h3 h4 h5 h6
 
-Development:
-1. Frontend: UI screen
-	     HTML: Hyper Text Markup Language: is used to create a skeleton/structure
-		    Whatever is visible on the browser is created using html 
+<h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
 
-	     CSS: cascading style sheet :  style a web page
+every tag is having their own set of attributes/properties using which we can customize the tag
 
-	     JAVASCRIPT: to perform any operation on the browser/client side 
+<p align="left|right|center"></p>
 
-	     React Js
-	     Tailwind Css
-		Angular
+image:
 
+if image file and the web page are at the same level 
+<img src="filename.png" width="" height=""> 1900 x 1080 -> 500 x 300
+<img src="photo.png" width="500" height="300">
 
-2. Backend: processing part -> server -> App Logic + Database 
+if image has been moved into another folder:
+ <img src="images/photo.png" width="500" height="300">
 
-	App Logic:JavaScript 
-	Database: MySQL, Mongo DB
-
-
-Client and Server
-Request and response 
-
-1. Client will send a request to server
-2. Server will accept the request and will process it
-3. Server will send the response to the client 
-
-Technical Aspects of Request and Response:
-
-Request:
-1. If we have to send a request, then we need the address/url of a server
-	ip address 192.168.1.2 / www.flipkart.com / www.amazon.in
-
-2. Request Method: Purpose of the request -> GET POST PUT DELETE PATCH OPTIONS
-
-Response:
-1. Data will be there
-2. Status: Using status a client is going to know what happened at the server side with the request. 
-Server along with the data will always give the status also.
-
-Status -> Code + Message
-	  200 201 202 ... 299
-	  300 301 302 ... 399
-	  400 401 402 ... 499 failure is due to client
-	  500 501 502 ... 599 failure due to server
-
-	  200 OK
-          400 BAD REQUEST , 401 UNAUTHORIZED
-          500 INTERNAL SERVER ERROR 
+../ is for coming out one level from the current folder
+<img src="../images/photo.png" width="500" height="300">
 
 
+how to display links:
+anchor tag
+<a href="https://www.flipkart.com">Visit flipkart</a>
 
-          
+lists:
+
+1. ordered list : series of items with the sequence of numeric or alphabetic values
+   
+   a. Mumbai
+   b. Pune
+   c. Indore 
+	type = 1 | a | A | I | i
+   <ol>
+           <li>Mumbai</li> 
+           <li>Pune</li>
+           <li>Nagpur</li>
+           <li>Chennai</li>
+        </ol>
+<ol type="a" start="3">
+           <li>Mumbai</li> 
+           <li>Pune</li>
+           <li>Nagpur</li>
+           <li>Chennai</li>
+        </ol>
+	
+
+2. unordered list
+
+ <ul type="square">
+           <li>Mumbai</li> 
+           <li>Pune</li>
+           <li>Nagpur</li>
+           <li>Chennai</li>
+        </ul>
 
 
-
-
+iframe tag
 
 
 
