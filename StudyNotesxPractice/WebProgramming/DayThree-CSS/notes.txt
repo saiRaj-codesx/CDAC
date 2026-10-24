@@ -1,0 +1,502 @@
+var obj = null; // null undefined
+
+
+
+var obj1 = obj === null || obj === undefined ? "hi" : obj;
+
+?? nullish coalescing 
+
+var obj1 = obj ?? "hi"; 
+// it is going to compare the left value to null or undefined 
+if left value is null or undefined then it will return the right value 
+but if left value is a proper data (not null and not undefined) left value will be returned 
+
+ var x = null;
+
+            var y = x ?? "hi";
+
+            console.log(y);
+
+?? -> null undefined
+
+|| -> null undefined 0 false
+
+
+array: collection of elements 
+
+-> it can contain dissimilar elements
+-> size is not fixed, it is dynamic
+
+var arr = [10,20,30,40,"hello",true];
+
+ var arr = [10,20,30,40,"hello",true];
+
+            console.log(arr);
+
+            for(var i=0; i<=5; i++){
+                console.log(arr[i]);
+            }
+
+ console.log(arr.length);
+            
+
+            for(var i=0; i<arr.length; i++){
+                console.log(arr[i]);
+            }
+            
+2d array: collection of 1d arrays / array of array 
+
+var arr = [[10,20,30],[40,50,60],[70,80,90]];
+
+console.log(arr);
+            console.log(arr.length); // 3
+            
+ var arr = [[10,20,30],[40,50,60,65],[70,80]];
+            
+            for(var i=0; i<arr.length; i++){
+                for(var j=0; j<arr[i].length; j++){
+                    console.log(arr[i][j]);
+                    
+                }
+            }
+
+
+JSON: JavaScript Object Notation its a new way of representing the data 
+
+storing the data in key and value pairs 
+
+{k:v, k:v, k:v}
+
+var student = {id:101, name:"Ramesh", marks:75, phone:"", dob:""};
+
+
+    console.log(student);
+
+        console.log(student.id);
+        console.log(student.name);
+        console.log(student.marks);
+        console.log(student.phone);
+
+in json object we can store any type of data 
+
+for any web application, now a days the json format has become the standard for data transfer between client and the server
+
+var student = {
+            id: 101,
+            name: "Rohan",
+            marks: 73,
+            phone: ["8876661", "65555"],
+            address: {
+                houseNo : "A-56",
+                street : "JS Nagar"
+            }
+        };
+
+        console.log(student);
+
+        console.log(student.id);
+        console.log(student.name);
+        console.log(student.marks);
+        console.log(student.phone, student.phone[0], student.phone[1]);
+        console.log(student.address, student.address.houseNo, student.address.street);
+
+var student = {
+            id: 101,
+            name: "Rohan",
+            marks: 73,
+            phone: ["8876661", "65555"],
+            address: {
+                houseNo : "A-56",
+                street : "JS Nagar"
+            }
+        };
+        console.log(student);
+
+        console.log(student.id);
+        console.log(student.name);
+        console.log(student.marks);
+        console.log(student.phone, student.phone[0], student.phone[1]);
+        // console.log(student.address, student.address.houseNo, student.address.street);
+        console.log(student.address); // undefined
+        console.log(student?.address?.houseNo); // Cannot read properties of undefined
+        // ?.
+        // optional chaining : only read the further keys when it is defined, 
+        // and don't read the further key if it is undefined 
+var studentsList = [{
+            id: 101,
+            name: "Rohan",
+            marks: 73,
+            phone: ["8876661", "65555"],
+            address: {
+                houseNo: "A-56",
+                street: "JS Nagar"
+            }
+        },
+        {
+            id: 102,
+            name: "Manoj",
+            marks: 83,
+            phone: ["90000", "6995555", "865677"],
+            address: {
+                houseNo: "A-56",
+                street: "JS Nagar"
+            }
+        },
+        {
+            id: 103,
+            name: "Vikram",
+            marks: 61,
+            phone: ["8876661", "65555"],
+            address: {
+                houseNo: "A-56",
+                street: "JS Nagar"
+            }
+        }];
+
+        console.log(studentsList);
+
+        for(var i = 0; i< studentsList.length; i++){
+            console.log(studentsList[i].id, studentsList[i].name, studentsList[i].marks, studentsList[i].address, studentsList[i].phone);
+            for(var j = 0; j<studentsList[i].phone.length; j++){
+                console.log(studentsList[i].phone[j]);
+            }
+        }
+
+var product = {
+            pid:111, 
+            productname:"Keyboard", 
+            price:7666, 
+            qty:6,
+            address:{houseNo:"B-45", state:"React Nagar"}
+        }; // json given by the server 
+        
+        // destructuring of the array/json : taking out key and value pairs outside of the json as decrete variable 
+        // product.pid product.name 
+        // 100 places product.name
+
+        const {pid, productname, price, qty, address} = product;
+
+        const {houseNo, state} = address;
+
+        console.log(pid);
+        console.log(productname);
+        console.log(price);
+        console.log(qty);
+        console.log(houseNo, state);
+
+const o1 = { x:34 , y:30 };
+
+const o2 = { z:50 };
+
+const o3 = {o1, o2 };
+
+ const o1 = {x: 34, y: 30};
+
+        const o2 = {z: 50};
+
+        const o3 = {...o1 , ...o2}; // {x:34, y:30, z:50}
+        // spread operator ...
+
+        console.log(o3);
+
+const o1 = [10,20,30];
+
+        const o2 = [40,50];
+
+        const o3 = [...o1,...o2]; // [10,20,30,40,50]
+        // spread operator ...
+
+        console.log(o3);
+
+OOPS in JS:
+note: the properties which we want to give to the object has to be declared in the constructor only 
+
+class Product{
+	int id;
+	Product(int pid){
+	 this.id = pid;
+	}
+	
+}
+
+class Product{
+        constructor(){
+            console.log("cons. called");
+        }
+       }
+
+
+       var obj1 = new Product();
+       var obj2 = new Product();
+
+
+class Product{
+        constructor(){
+            console.log("cons. called");
+            this.id=101;
+            this.name="Keyboard";
+        }
+       }
+
+
+       var obj1 = new Product();
+       console.log(obj1.id, obj1.name);
+
+       var obj2 = new Product();
+       console.log(obj2.id, obj2.name);
+
+
+       class Product{
+        constructor(id, name){
+            this.id=id;
+            this.name=name;
+        }
+       }
+
+
+       var obj1 = new Product(101, "Keyboard");
+       console.log(obj1.id, obj1.name);
+
+       var obj2 = new Product(110, "Mouse");
+       console.log(obj2.id, obj2.name);
+
+   class Product {
+            constructor(id, name) {
+                this.id = id;
+                this.name = name;
+            }
+            printDetails() {
+                console.log(this.id, this.name);
+            }
+        }
+
+
+        var obj1 = new Product(101, "Keyboard");
+        obj1.printDetails();
+
+        var obj2 = new Product(110, "Mouse");
+        obj2.printDetails();
+
+inheritance
+
+  class A{
+        constructor(){
+            this.x = 10;
+        }
+        show(){
+            console.log("inside show x=",this.x);
+        }
+     }
+
+     class B extends A {
+
+     }
+
+     var bObj = new B();
+
+     console.log(bObj.x);
+     bObj.show();
+
+ class A{
+        constructor(){
+            this.x = 10;
+        }
+        show(){
+            console.log("inside show x=",this.x);
+        }
+     }
+
+     class B extends A {
+        constructor(){
+            super();
+            this.y = 20;
+        }
+     }
+
+     var bObj = new B();
+     console.log(bObj.y);
+     console.log(bObj.x);
+     bObj.show();
+
+
+Types:
+Single
+Multilevel A->B->C->D
+Hierarchical 
+    A
+B   C   D
+Multiple -> no native support for multiple inheritance -> typescript interface, mixins 
+
+
+Callback functions: a function which is passed as an argument of the another function 
+
+  function show(arg){
+            console.log(arg);
+        }
+
+        function demo(){
+            console.log("inside demo");
+        }
+
+        show(demo); // we can pass a function as an argument of another function
+
+// demo is a callback 
+
+function show(arg){
+            console.log(arg);
+            arg(); // calling a callback function 
+        }
+
+        function demo(){
+            console.log("inside demo");
+        }
+
+        show(demo); // we can pass a function as an argument of another function
+        // demo is a callback 
+
+function show(arg){
+            console.log(arg);
+            arg(); // calling a callback function 
+        }
+
+show(function(){ // anonymous function
+            console.log("inside demo");
+}); // we can pass a function as an argument of another function
+
+
+      
+ function process(arg){
+            console.log("processing....", arg);
+            
+       }
+
+       function start(arg){
+        console.log(arg);
+        arg(100);
+       }
+
+       start(process);
+
+in JS functions are also considered as objects 
+
+ let x = function(){
+            console.log("anonymous function called");
+        }
+
+        console.log(typeof x);
+        x();
+
+
+Arrow function:
+
+(arguments) => {
+
+}
+
+  let sum = (x,y) => {
+            let z = x + y;
+            return z;
+        }
+
+        const rs = sum(2,7);
+        console.log(rs);
+
+  // only 1 statement
+        // that is too a return statement 
+
+        let sum = (x, y) => x+y;
+
+        const rs = sum(2,7);
+        console.log(rs);
+
+let increment = n => n + 5;
+
+        const rs = increment(2);
+        console.log(rs);
+
+ var arr = [10,45,32,76,45];
+
+        // foreach 
+        arr.forEach((value, index)=>{
+            console.log(value, index);
+        }); // inside of the forEach function we have to pass a callback function 
+        // and forEach is going to call that callback function for each element of the array 
+        
+      var arr = [10,45,32,76,45,61,78];
+        // even numbers from the array
+      
+        var resultArray = arr.filter(value => value % 2 === 0);
+
+        console.log(resultArray);
+
+var arr = [10,45,32,76,45,61,78];
+        // [20, 90]
+        
+        let rs = arr.map(value => value * 2);
+
+        console.log(rs);
+
+arr.reduce(callback)
+
+
+types of process in JS:
+
+1. Synchronous: blocking nature 
+	p1 p2 p3 sequence, if dependency is there between process/tasks 
+
+	p1 -> 3 sec
+	p2 -> 1 sec
+	p3 -> 2 sec
+
+2. Asynchronous: non blocking nature 
+
+       p1()
+       p2()
+       p3()
+
+setTimeout
+
+ function show(){
+
+            console.log("show called");
+
+        }
+
+        console.log("logic started....");
+        setTimeout(show, 1000); // asynchronously
+        console.log("logic end....");
+
+console.log("logic started....");
+        setTimeout(function show(){
+
+            console.log("show called");
+
+        }, 1000); // asynchronously
+        console.log("logic end....");
+
+
+
+        console.log("started calculating sum...");
+        setTimeout(()=>{
+            var x = 5;
+            var y = 2;
+            var z = x + y;
+            console.log("Sum is", z);
+        },1500);
+
+        console.log("started calculating factorial...")
+        setTimeout(()=>{
+            var n = 5;
+            var fact = 1 ;
+            for(var i=1;i<=n;i++){
+                fact = fact * i;
+            }
+            console.log("Factorial is", fact);
+        },3000);
+
+        console.log("started calculating square...")
+        setTimeout(()=>{
+            var n = 5;
+            var sq = n * n;
+            console.log("Square is", sq);
+        },2000);
