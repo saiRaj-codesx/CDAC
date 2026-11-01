@@ -1,0 +1,43 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+.container {
+  max-width: 800px;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+.heading {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.controls {
+  margin-bottom: 15px;
+  display: flex;
+  gap: 10px;
+}
+button {
+  padding: 5px 10px;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+select,
+p {
+  padding: 5px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 6px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+th {
+  background-color: #f2f2f2;
+}
